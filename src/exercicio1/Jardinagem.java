@@ -10,8 +10,9 @@ public class Jardinagem {
     private double valorAdubo;
     private double valorMetroGrama;
     private double valorCorteGrama;
+    private boolean cadastrado;
 
-    public Jardinagem(String nomeJardim, double quantidadeMetros, int quantidadePlantas, double quantidadeMetrosGrama, double quilosAdubo, double calculoGramasMetroGrama, double valorAdubo, double valorMetroGrama, double valorCorteGrama) {
+    public Jardinagem() {
         this.nomeJardim = nomeJardim;
         this.quantidadeMetros = quantidadeMetros;
         this.quantidadePlantas = quantidadePlantas;
@@ -21,6 +22,7 @@ public class Jardinagem {
         this.valorAdubo = valorAdubo;
         this.valorMetroGrama = valorMetroGrama;
         this.valorCorteGrama = valorCorteGrama;
+        this.cadastrado = false;
     }
 
     public String getNomeJardim() {
@@ -95,6 +97,14 @@ public class Jardinagem {
         this.valorCorteGrama = valorCorteGrama;
     }
 
+    public boolean isCadastrado() {
+        return cadastrado;
+    }
+
+    public void setCadastrado(boolean cadastrado) {
+        this.cadastrado = cadastrado;
+    }
+
     public void usarAdubo() {
         double gramasAdubo = quilosAdubo * 1000;
         calculoGramasMetroGrama = quantidadeMetrosGrama / 2 * 100;
@@ -102,12 +112,12 @@ public class Jardinagem {
         quilosAdubo = gramasAdubo / 1000;
     }
 
-    public void precoAdubo() {
-        valorAdubo *= calculoGramasMetroGrama;
+    public double precoAdubo() {
+        double valorTotalAdubo = valorAdubo * calculoGramasMetroGrama;
+        return valorTotalAdubo;
     }
 
-    public double precoCorteGrama() {
+    public void precoCorteGrama() {
         valorCorteGrama = quantidadeMetrosGrama * valorMetroGrama;
-        return valorCorteGrama;
     }
 }
