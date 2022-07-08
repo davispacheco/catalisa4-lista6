@@ -45,27 +45,15 @@ public class Caixa {
         this.lancamentosDebito = lancamentosDebito;
     }
 
-    public boolean credito(double valor) {
-        boolean sucesso;
-        if (valor <= 0) {
-            sucesso = false;
-        } else {
-            saldo += valor;
-            lancamentosCredito++;
-            sucesso = true;
-        }
-        return sucesso;
+    public void credito(double valor) {
+        saldo += valor;
+        lancamentosCredito++;
     }
 
-    public boolean debito(double valor) {
-        boolean sucesso;
-        if (valor <= 0 && valor > saldo ) {
-            sucesso = false;
-        } else {
-            saldo -= valor;
-            lancamentosDebito ++;
-            sucesso = true;
-        }
-        return sucesso;
+
+    public void debito(double valor) {
+        saldo -= valor;
+        lancamentosDebito++;
     }
+
 }
